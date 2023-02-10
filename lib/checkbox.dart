@@ -9,8 +9,8 @@ class MyCheckBox extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Map<int, bool> checkboxChanged = ref.watch(myStateNotifierProvider);
-    checks[checkboxChanged.keys.first] = checkboxChanged.values.first;
+    var checkboxChanged = ref.watch(myStateNotifierProvider);
+    checks[checkboxChanged.index] = checkboxChanged.value;
 
     return Scaffold(
       body: Center(
