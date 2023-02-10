@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:todolistriverpod/providers/checkstatenotifier.dart';
 import 'package:todolistriverpod/providers/enumstatenotifier.dart';
+import 'package:todolistriverpod/providers/selectlist.dart';
 
 List<bool> checks = [false, true, true, false];
 
@@ -20,6 +21,8 @@ class MyCheckBox extends ConsumerWidget {
 
     TaskCategories groupValue = ref.watch(myEnumStateNotifierProvider);
 
+    List<bool> lastList = ref.watch(mySelectListStateNotifierProvider);
+
     return Scaffold(
       body: Center(
           child: Column(
@@ -37,6 +40,10 @@ class MyCheckBox extends ConsumerWidget {
                     ref
                         .read(myEnumStateNotifierProvider.notifier)
                         .selectRadioButton(TaskCategories.all);
+
+                         ref
+                        .read(mySelectListStateNotifierProvider.notifier)
+                        .selectList(TaskCategories.all);
                   }),
               const Text('All'),
 
@@ -48,6 +55,11 @@ class MyCheckBox extends ConsumerWidget {
                      ref
                         .read(myEnumStateNotifierProvider.notifier)
                         .selectRadioButton(TaskCategories.completed);
+
+
+                        ref
+                        .read(mySelectListStateNotifierProvider.notifier)
+                        .selectList(TaskCategories.completed);
                   }),
               const Text('Completed'),
 
@@ -59,6 +71,11 @@ class MyCheckBox extends ConsumerWidget {
                      ref
                         .read(myEnumStateNotifierProvider.notifier)
                         .selectRadioButton(TaskCategories.uncompleted);
+
+
+                         ref
+                        .read(mySelectListStateNotifierProvider.notifier)
+                        .selectList(TaskCategories.uncompleted);
                   }),
               const Text('Uncompleted'),
 
@@ -68,7 +85,7 @@ class MyCheckBox extends ConsumerWidget {
           SizedBox(
             height: 500,
             child: ListView.builder(
-                itemCount: checks.length,
+                itemCount: lastList.length,
                 itemBuilder: (context, index) {
                   return Checkbox(
                     onChanged: (bool? value) {
@@ -76,7 +93,7 @@ class MyCheckBox extends ConsumerWidget {
                           .read(myStateNotifierProvider.notifier)
                           .cont(index, value!);
                     },
-                    value: checks[index],
+                    value: lastList[index],
                   );
                 }),
           ),
