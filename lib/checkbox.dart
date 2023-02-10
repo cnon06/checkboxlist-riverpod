@@ -9,27 +9,40 @@ class MyCheckBox extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Map<int, bool> trr = ref.watch(myStateNotifierProvider);
-    checks[trr.keys.first] = trr.values.first;
+    Map<int, bool> checkboxChanged = ref.watch(myStateNotifierProvider);
+    checks[checkboxChanged.keys.first] = checkboxChanged.values.first;
+
     return Scaffold(
       body: Center(
-          child: ListView.builder(
-              itemCount: checks.length,
-              itemBuilder: (context, index) {
-                
-                return Checkbox(
-                  onChanged: (bool? value) {
-                    ref
-                        .read(myStateNotifierProvider.notifier)
-                        .cont(index, value!);
-                  },
-                  
-                  value: checks[index],
-                );
-              })
-
- 
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(trues(checks).toString()),
+          SizedBox(
+            height: 500,
+            child: ListView.builder(
+                itemCount: checks.length,
+                itemBuilder: (context, index) {
+                  return Checkbox(
+                    onChanged: (bool? value) {
+                      ref
+                          .read(myStateNotifierProvider.notifier)
+                          .cont(index, value!);
+                    },
+                    value: checks[index],
+                  );
+                }),
           ),
+        ],
+      )),
     );
+  }
+
+  int trues(List<bool> checks) {
+    int count = 0;
+    checks.forEach((element) {
+      if (element == true) count++;
+    });
+    return count;
   }
 }
