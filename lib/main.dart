@@ -6,12 +6,14 @@ import 'checkbox.dart';
 
 
 
-void main() =>  runApp( ProviderScope(child:  MyApp()));
+void main() =>  runApp( const ProviderScope(child:  MyApp()));
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
       // home: TodoApp(),

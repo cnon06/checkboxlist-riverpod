@@ -14,12 +14,12 @@ class CheckNotifier extends StateNotifier<Map<int, bool>> {
   }
 }
 
-// final myStateNotifierProvider = StateNotifierProvider<CheckNotifier,bool>((ref) => CheckNotifier(false));
 
-// class CheckNotifier extends StateNotifier<bool> {
-//   CheckNotifier(super.state);
 
-//   void cont(bool value) {
-//     state = value;
-//   }
-// }
+
+
+
+
+
+
+
