@@ -17,7 +17,8 @@ class MyCheckBox extends ConsumerWidget {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(trues(checks).toString()),
+          // Text(trues(checks).toString()),
+          Text(checks.where((element) => element == true).length.toString()),
           SizedBox(
             height: 500,
             child: ListView.builder(
@@ -38,11 +39,5 @@ class MyCheckBox extends ConsumerWidget {
     );
   }
 
-  int trues(List<bool> checks) {
-    int count = 0;
-    for (var element in checks) {
-      if (element == true) count++;
-    }
-    return count;
-  }
+  
 }
