@@ -40,9 +40,9 @@ class MyCheckBox extends ConsumerWidget {
 
   int trues(List<bool> checks) {
     int count = 0;
-    checks.forEach((element) {
+    for (var element in checks) {
       if (element == true) count++;
-    });
+    }
     return count;
   }
 }
