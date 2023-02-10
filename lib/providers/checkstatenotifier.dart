@@ -3,7 +3,7 @@ import 'package:todolistriverpod/checkbox.dart';
 import 'package:todolistriverpod/model/indexvalue.dart';
 
 final myStateNotifierProvider =
-    // StateNotifierProvider<CheckNotifier, Map<int, bool>>(
+
       StateNotifierProvider<CheckNotifier, IndexValue>(
         (ref) => CheckNotifier(IndexValue(index: 0, value: checks[0])));
 
